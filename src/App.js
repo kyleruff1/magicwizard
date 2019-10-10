@@ -1,10 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Carousel from "./components/Carousel";
+import Navbar from "./components/Navbar";
+import DeckList from "./components/DeckList";
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
+      <Carousel />
+      <DeckList />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
