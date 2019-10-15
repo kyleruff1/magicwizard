@@ -36,7 +36,7 @@ export default function Carousel() {
             </div>
             <div class="carousel-item" data-interval="100">
               <img
-                src="https://227rsi2stdr53e3wto2skssd7xe-wpengine.netdna-ssl.com/wp-content/uploads/2019/09/MTG-Throne-of-Eldraine-Banner-2-730x200.jpg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP80RjLGY91nK05ccw27JHOMMVmDzINywIAzLW6tRQU2AN1a8L"
                 class="d-block w-100"
                 alt="..."
                 height="400"

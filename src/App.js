@@ -1,31 +1,29 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Carousel from "./components/Carousel";
-import Navbar from "./components/Navbar";
-import DeckList from "./components/DeckList";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
+import Browse from "./pages/Browse";
+import Saved from "./pages/Saved";
+import NoMatch from "./pages/NoMatch";
+import scripts from "./components/script";
+// import Carousel from "./components/Carousel";
+// import Navbar from "./components/Navbar";
+// import DeckList from "./components/DeckList";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
+    <Router>
+      {/* <Navbar />
       <Carousel />
-      <DeckList />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <DeckList /> */}
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/browse" component={Browse} />
+        <Route exact path="/saved" component={Saved} />
+        <Route exact path="/searchtest" component={scripts} />
+        <Route component={NoMatch} />
+      </Switch>
+      //
+    </Router>
   );
 }
 
