@@ -23,6 +23,11 @@ body {
   margin-top: 60px;
 }
 
+/* Browse bar */
+.form-control {
+  margin-top: 60px;
+}
+
 /* homepage list */
 .table {
   margin-top: 10px;
