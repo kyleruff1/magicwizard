@@ -19,6 +19,7 @@ export default function DeckList() {
           <tr>
             <th class="deck-list-header">Mana Color</th>
             <th>Deck</th>
+            <th>Popularity</th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +33,9 @@ export default function DeckList() {
               ></img>
             </th>
             <td>Freeze Mage</td>
+            <td>
+              <i class="far fa-chart-bar"></i>
+            </td>
           </tr>
           <tr>
             <th scope="row">
@@ -43,6 +47,9 @@ export default function DeckList() {
               ></img>
             </th>
             <td>OTK Paladin</td>
+            <td>
+              <i class="far fa-chart-bar"></i>
+            </td>
           </tr>
           <tr>
             <th scope="row">
@@ -54,6 +61,9 @@ export default function DeckList() {
               ></img>
             </th>
             <td>Deathrattle Hunter</td>
+            <td>
+              <i class="far fa-chart-bar"></i>
+            </td>
           </tr>
         </tbody>
       </table>
