@@ -7,13 +7,13 @@ export default function Navbar() {
         <div class="container">
           <ul class="nav navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/">
                 home
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                idk
+              <a class="nav-link" href="/browse">
+                browse
               </a>
             </li>
           </ul>
