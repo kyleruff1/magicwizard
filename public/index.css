@@ -37,3 +37,26 @@ body {
   color: rgba(253, 253, 253, 0.767);
   background-color: #212020;
 }
+
+/* Login form */
+#login-form {
+  text-align: center;
+}
+
+#input-username,
+#input-password {
+  display: inline-block;
+  text-align: center;
+}
+
+#input-username {
+  margin-top: 2%;
+}
+
+#input-password {
+  margin-top: 1%;
+}
+
+#hey {
+  margin-top: 15%;
+}

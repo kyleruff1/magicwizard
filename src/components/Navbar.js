@@ -21,6 +21,11 @@ export default function Navbar() {
                 my deck
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/login">
+                login
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
