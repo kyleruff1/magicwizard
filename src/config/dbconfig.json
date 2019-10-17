@@ -1,0 +1,9 @@
+{
+    "development": {
+      "username": "clglgrpexjcx38eb",
+      "password": "bju3ukes6vvevxl3",
+      "database": "hello-api-database",
+      "host": "uc13jynhmkss3nve.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+      "dialect": "mysql"
+    }
+  }

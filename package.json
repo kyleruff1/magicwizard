@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "mtgsdk": "^0.4.3",
+    "passport": "^0.4.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-router-dom": "^5.1.2",
