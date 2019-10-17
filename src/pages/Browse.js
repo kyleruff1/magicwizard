@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 // import React from "react";
-import Carousel from "../components/Carousel";
 import Navbar from "../components/Navbar";
 
 export default class Browse extends Component {
