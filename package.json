@@ -7,7 +7,11 @@
     "passport": "^0.4.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
+<<<<<<< HEAD
+    "react-google-login": "^5.0.5",
+=======
     "react-router-dom": "^5.1.2",
+>>>>>>> 51917b3af3009b09b4c18ea4b27f698f1c834eaa
     "react-scripts": "3.1.2"
   },
   "scripts": {
