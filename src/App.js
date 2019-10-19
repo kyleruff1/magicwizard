@@ -1,6 +1,3 @@
-var passport = require('passport');
-require('./config/passport')(passport);
-
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
@@ -12,6 +9,9 @@ import Login from "./pages/Login";
 // import Carousel from "./components/Carousel";
 // import Navbar from "./components/Navbar";
 // import DeckList from "./components/DeckList";
+
+// var passport = require('passport');
+// require('./config/passport')(passport);
 
 function App() {
   return (
