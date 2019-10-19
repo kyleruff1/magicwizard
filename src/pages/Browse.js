@@ -13,17 +13,29 @@ export default class Browse extends Component {
       searchTerm: ""
     };
   }
+  componentDidMount() {
+    this.loadList();
+  }
 
-  handleClick = event => {
-    event.preventDefault();
-    console.log("Submit Click");
-    mtg.card
-      .all({ name: this.state.searchTerm, pageSize: 1 })
-      .on("data", card => {
-        console.log(card.name);
-        console.log(card.imageUrl);
-      });
+  //   this will initially load 10 cards when you load the browse page
+  loadList = () => {
+    mtg.card.where({ pageSize: 10 }).then(results => {
+      console.log(results);
+      this.setState({ items: results });
+    });
   };
+
+  //   currently not using the function below
+  //   handleClick = event => {
+  //     event.preventDefault();
+  //     console.log("Submit Click");
+  //     mtg.card
+  //       .all({ name: this.state.searchTerm, pageSize: 1 })
+  //       .on("data", card => {
+  //         console.log(card.name);
+  //         console.log(card.imageUrl);
+  //       });
+  //   };
 
   handleAutoChange = () => {
     mtg.card.where({ name: this.state.searchTerm }).then(results => {
@@ -31,6 +43,7 @@ export default class Browse extends Component {
     });
   };
 
+  //   every input in searchbar will trigger an api call.
   handleChange = event => {
     console.log(this.state.searchTerm);
     let searchTerm = event.target.value;
@@ -40,6 +53,12 @@ export default class Browse extends Component {
       this.setState({ items: results });
     });
     console.log(this.state.items.map(item => item.name));
+  };
+  // hovering over a list item will give it's name and description
+  hoverAlert = (cardName, cardDescription) => {
+    return () => {
+      alert(`${cardName} : ${cardDescription}`);
+    };
   };
 
   // handleChange = event => {
@@ -72,7 +91,11 @@ export default class Browse extends Component {
           {/* idk lists here */}
           <ul class="list-group">
             {this.state.items.map(item => (
-              <li class="list-group-item" key={item.id}>
+              <li
+                class="list-group-item"
+                key={item.id}
+                onMouseOver={this.hoverAlert(item.name, item.originalText)}
+              >
                 {item.name}
               </li>
             ))}
