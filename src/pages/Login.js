@@ -25,7 +25,7 @@ export default class Browse extends Component {
         <div class="container" id="login-form">
           <h1 id="hey">Login</h1>
           <input
-            className="form-control form-control-lg col-7"
+            className="form-control col-7"
             id="input-username"
             placeholder="Username"
             type="text"
@@ -33,7 +33,7 @@ export default class Browse extends Component {
             onChange={this.handleUsernameChange}
           />
           <input
-            className="form-control form-control-lg col-7"
+            className="form-control col-7"
             id="input-password"
             placeholder="Password"
             type="password"
