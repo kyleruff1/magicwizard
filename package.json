@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
     "mtgsdk": "^0.4.3",
     "passport": "^0.4.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-google-login": "^5.0.5",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2"
   },
   "scripts": {
@@ -32,7 +34,7 @@
     ]
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
+  "main": "./client/src/index.js",
   "devDependencies": {},
   "repository": {
     "type": "git",

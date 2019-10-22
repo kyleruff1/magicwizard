@@ -12,9 +12,6 @@ import Cards from "./pages/Cards";
 // import Navbar from "./components/Navbar";
 // import DeckList from "./components/DeckList";
 
-// var passport = require('passport');
-// require('./config/passport')(passport);
-
 function App() {
   return (
     <Router>
@@ -30,6 +27,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route component={NoMatch} />
       </Switch>
+      //
     </Router>
   );
 }
