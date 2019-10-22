@@ -27,7 +27,6 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route component={NoMatch} />
       </Switch>
-      //
     </Router>
   );
 }

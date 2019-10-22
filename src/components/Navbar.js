@@ -1,4 +1,5 @@
 import React from "react";
+import "./navbar.css";
 
 export default function Navbar() {
   return (
@@ -8,22 +9,22 @@ export default function Navbar() {
           <ul className="nav navbar-nav">
             <li className="nav-item active">
               <a className="nav-link" href="/">
-                home
+                Home
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/browse">
-                browse
+                Browse
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/saved">
-                my deck
+                My Deck
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/login">
-                login
+                Login
               </a>
             </li>
           </ul>
