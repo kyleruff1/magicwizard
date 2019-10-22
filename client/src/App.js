@@ -6,7 +6,7 @@ import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
 import scripts from "./components/script";
 import Login from "./pages/Login";
-import Cards from "./pages/Cards";
+// import Cards from "./pages/Cards";
 
 // import Carousel from "./components/Carousel";
 // import Navbar from "./components/Navbar";
@@ -22,7 +22,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/browse" component={Browse} />
         <Route exact path="/saved" component={Saved} />
-        <Route exact path="/cards/:id" component={Cards} />
+        {/* <Route exact path="/cards/:id" component={Cards} /> */}
         <Route exact path="/searchtest" component={scripts} />
         <Route exact path="/login" component={Login} />
         <Route component={NoMatch} />
