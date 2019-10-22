@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 // import React from "react";
 import Navbar from "../components/Navbar";
+import "../components/browse.css"
+
 const mtg = require("mtgsdk");
+
+var pageSize = 25;
 
 export default class Browse extends Component {
   constructor(props) {
@@ -10,43 +14,81 @@ export default class Browse extends Component {
       error: null,
       isLoaded: false,
       items: [],
-      searchTerm: ""
+      searchTerm: "",
+      selectedCard: {cardName:"", cardDescription:"", cardImage:""}
     };
   }
+  componentDidMount() {
+    this.loadList();
+  }
 
-  handleClick = event => {
-    event.preventDefault();
-    console.log("Submit Click");
-    mtg.card
-      .all({ name: this.state.searchTerm, pageSize: 1 })
-      .on("data", card => {
-        console.log(card.name);
-        console.log(card.imageUrl);
-      });
+  //   currently not using the function below
+  //   handleClick = event => {
+  //     event.preventDefault();
+  //     console.log("Submit Click");
+  //     mtg.card
+  //       .all({ name: this.state.searchTerm, pageSize: 1 })
+  //       .on("data", card => {
+  //         console.log(card.name);
+  //         console.log(card.imageUrl);
+  //       });
+  //   };
+
+
+  //   this will initially load 10 cards when you load the browse page
+  loadList = () => {
+    mtg.card.where({ pageSize: pageSize }).then(results => {
+      console.log(results);
+      this.setState({ items: results });
+    });
   };
+
+//-----------------------------------------------------------------------------
 
   handleAutoChange = () => {
     mtg.card.where({ name: this.state.searchTerm }).then(results => {
       console.log(results);
     });
   };
-
+//-----------------------------------------------------------------------------
+  //   every input in searchbar will trigger an api call.
   handleChange = event => {
     console.log(this.state.searchTerm);
     let searchTerm = event.target.value;
     this.setState({ searchTerm: event.target.value });
-    mtg.card.where({ name: searchTerm, pageSize: 10 }).then(results => {
+    mtg.card.where({ name: searchTerm, pageSize: pageSize }).then(results => {
       console.log(results);
       this.setState({ items: results });
     });
     console.log(this.state.items.map(item => item.name));
+    pageSize = 25;
+  };
+  // clicking on a list item will give it's name and description
+  clickAlert = (cardName, cardDescription, cardImage) => {
+    return () => {
+      this.setState({selectedCard:{cardName,cardDescription,cardImage}})
+    };
   };
 
+//------------------------------------------------------------------------------
+
+  moreCards = event => {
+          event.preventDefault();
+          console.log("More button Clicked");
+          mtg.card.where({ name: this.state.searchTerm, pageSize: pageSize += 25 }).then(results => {
+            console.log(results);
+            this.setState({ items: results });
+          });
+        };
+
+//------------------------------------------------------------------------------
   render() {
     return (
-      <div>
-        <Navbar />
-        <div className="container">
+  <div>
+    <Navbar />
+      <div className="container">
+       <div className="row">
+        <div className="col-sm-12 col-md-12 col-lg-12">
           <label>
             <input
               className="form-control form-control-lg"
@@ -57,56 +99,53 @@ export default class Browse extends Component {
               onChange={this.handleChange}
             />
           </label>
-          {/* <button
+          <button
             type="button"
             className="btn btn-light"
-            onClick={this.handleClick}
-          >
+            onClick={this.handleChange}>
             Search
-          </button> */}
+          </button>
+        </div>
+       </div>
+      </div>
           {/* idk lists here */}
-          <ul class="list-group">
+
+          <div className="row">
+            <div className="col-sm-12 col-md-4 col-lg-4" >
+          <ul className="list-group">
             {this.state.items.map(item => (
-              <li class="list-group-item" key={item.id}>
+              <li
+                className="list-group-item"
+                key={item.id}
+                onClick={this.clickAlert(item.name, item.originalText, item.imageUrl)}
+              >
                 {item.name}
+                <br></br>
+                {item.manaCost}
               </li>
             ))}
           </ul>
-
-          {/* idk pagination here */}
-          <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#">
-                  1
-                </a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#">
-                  2
-                </a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#">
-                  3
-                </a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+      <div className="row">
+        <div className="col-sm12 col-md-4 col-lg-4" >
+          <div className="cardInfo">
+            <h2>
+            {this.state.selectedCard.cardName}
+            </h2>
+            <img className="cardImage" src={this.state.selectedCard.cardImage} alt="No Image Available"></img>
+            <p className="cardDescription">
+            {this.state.selectedCard.cardDescription}
+            </p>
+          </div>
+          <button type="button"
+            className="btn btn-light"
+            onClick={this.moreCards}>
+            More Cards
+          </button>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
     );
   }
 }
