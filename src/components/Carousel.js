@@ -21,42 +21,41 @@ export default function Carousel() {
           <div class="carousel-inner">
             <div class="carousel-item active" data-interval="100">
               <img
-                src="https://dlair.net/austin/wp-content/uploads/2017/05/mtg-banner-730x280.jpg"
+                src="https://www.hipstersofthecoast.com/wp-content/uploads/2019/07/commander-2019-twoer-art.jpg"
                 class="d-block w-100"
                 alt="..."
                 height="400"
                 width="200"
               ></img>
+
               <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
               </div>
             </div>
+
             <div class="carousel-item" data-interval="100">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP80RjLGY91nK05ccw27JHOMMVmDzINywIAzLW6tRQU2AN1a8L"
+                src="https://mtgazone.com/wp-content/uploads/2019/07/throne-of-eldraine-art-logo.jpg"
                 class="d-block w-100"
                 alt="..."
                 height="400"
-                width="200"
-              ></img>
+                width="200">
+                </img>
+
               <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </div>
-            {/* <div class="carousel-item" data-interval="100">
-              <img src="..." class="d-block w-100" alt="..."></img>
+
+            <div class="carousel-item" data-interval="100">
+              <img src="https://magic.wizards.com/sites/mtg/files/MTGArena_logo.png" 
+              class="d-block w-100" 
+              alt="Planes Walker logo"
+              height="400"
+              width="200">
+              </img>
+
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>
-                  Praesent commodo cursus magna, vel scelerisque nisl
-                  consectetur.
-                </p>
               </div>
-            </div> */}
+            </div>
           </div>
           <a
             class="carousel-control-prev"
