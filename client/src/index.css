@@ -1,13 +1,63 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #282c35;
+  color: #cdcdcd;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/* navbar CSS */
+.navbar {
+  background-color: #282c35;
+  opacity: 0.9;
+}
+
+.nav-link {
+  color: rgba(253, 253, 253, 0.767);
+}
+
+.nav-link:hover {
+  color: rgba(253, 253, 253, 0.767);
+  text-shadow: 1px 1px 1px black, 0 0 4px rgba(253, 253, 253, 0.671),
+    0 0 5px rgba(253, 253, 253, 0.671);
+}
+
+/* carousel CSS */
+.main-carousel {
+  margin-top: 60px;
+}
+
+/* Browse bar */
+.form-control {
+  margin-top: 60px;
+}
+
+/* homepage list */
+.table {
+  margin-top: 10px;
+}
+
+.list-group-item {
+  color: rgba(253, 253, 253, 0.767);
+  background-color: #212020;
+}
+
+/* Login form */
+#login-form {
+  text-align: center;
+}
+
+#input-username,
+#input-password {
+  display: inline-block;
+  text-align: center;
+}
+
+#input-username {
+  margin-top: 2%;
+}
+
+#input-password {
+  margin-top: 1%;
+}
+
+#hey {
+  margin-top: 15%;
 }
