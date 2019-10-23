@@ -144,26 +144,26 @@ class App extends Component {
 
 
 
-// import Carousel from "./components/Carousel";
-// import Navbar from "./components/Navbar";
-// import DeckList from "./components/DeckList";
-// var passport = require('passport');
-// require('./config/passport')(passport);
-class App1 {
-  constructor() {
-    return (<Router>
+import Carousel from "./components/Carousel";
+import Navbar from "./components/Navbar";
+import DeckList from "./components/DeckList";
+var passport = require('passport');
+require('./config/passport')(passport);
+// class App1 {
+//   constructor() {
+//     return (<Router>
 
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/browse" component={Browse} />
-        <Route exact path="/saved" component={Saved} />
-        <Route exact path="/cards/:id" component={Cards} />
-        <Route exact path="/searchtest" component={scripts} />
-        {/* <Route exact path="/login" component={Login} /> */}
-        <Route component={NoMatch} />
-      </Switch>
-    </Router>);
-  }
-}
+//       <Switch>
+//         <Route exact path="/" component={Home} />
+//         <Route exact path="/browse" component={Browse} />
+//         <Route exact path="/saved" component={Saved} />
+//         <Route exact path="/cards/:id" component={Cards} />
+//         <Route exact path="/searchtest" component={scripts} />
+//         {/* <Route exact path="/login" component={Login} /> */}
+//         <Route component={NoMatch} />
+//       </Switch>
+//     </Router>);
+//   }
+// }
 
 export default App;
