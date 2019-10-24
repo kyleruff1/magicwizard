@@ -111,7 +111,7 @@ export default class Browse extends Component {
         {/* idk lists here */}
 
       <div className="row">
-        <div className="col-sm-12 col-md-5 col-lg-5" >
+        <div className="col2-sm-12 col-md-6 col-lg-6" >
           <ul className="list-group">
             {this.state.items.map(item => (
               <li
@@ -127,12 +127,12 @@ export default class Browse extends Component {
           </ul>
         </div>
 
-          <div className="col-sm12 col-md-4 col-lg-4" >
+          <div className="col-sm12 col-md-5 col-lg-5" >
             <div className="cardInfo">
               <h2>
                 {this.state.selectedCard.cardName}
               </h2>
-              <img className="cardImage" src={this.state.selectedCard.cardImage} alt="No Image Available"></img>
+              <img className="cardImage" src={this.state.selectedCard.cardImage} srcSet="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=0&type=card" ></img>
               <p className="cardDescription">
                 {this.state.selectedCard.cardDescription}
               </p>

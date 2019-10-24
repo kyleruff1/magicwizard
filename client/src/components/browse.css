@@ -3,12 +3,15 @@
     background-color: #222;
     position: fixed;
     width: 30%;
+    height: 75%;
     border-top-right-radius: 0.25rem;
     border-top-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
 
 }
 
-.cardImage{
+.cardDescription{
 
     
 
@@ -21,12 +24,17 @@
 
 }
 
-.btn{
+.btn .cardImage{
 
     margin-left: 10%;
 
 }
 
+.cardImage{
+
+    margin-left: 10%;
+
+}
 /*.cardDescription{
 
     margin: 20px;
