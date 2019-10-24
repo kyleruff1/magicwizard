@@ -1,1 +1,3 @@
-export const Card = require("./card");
+module.exports = {
+  Book: require("./book")
+};

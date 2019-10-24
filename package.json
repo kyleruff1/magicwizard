@@ -1,65 +1,28 @@
 {
-  "name": "magicwizard",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.19.0",
-    "bcryptjs": "^2.4.3",
-    "concurrently": "^5.0.0",
-    "connect-mongo": "^3.0.0",
-    "dotenv": "^8.2.0",
-    "express-session": "^1.17.0",
-    "mongoose": "^5.7.6",
-    "morgan": "^1.9.1",
-    "mtgsdk": "^0.4.3",
-    "passport": "^0.4.0",
-    "passport-google-oauth": "^2.0.0",
-    "passport-local": "^1.0.0",
-    "path": "^0.12.7",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1",
-    "react-google-login": "^5.0.5",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.1.2"
-  },
+  "name": "mern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "client-install": "cd client && npm install",
-    "start": "if-env  NODE_ENV=production && npm run start:prod npm run dev",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
-    "server": "npm run dev",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "cd client && react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "cd client && npm install && npm run build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "./client/src/index.js",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kyleruff1/MagicWizard.git"
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kyleruff1/MagicWizard/issues"
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
   },
-  "homepage": "https://github.com/kyleruff1/MagicWizard#readme"
+  "dependencies": {
+    "axios": "^0.18.1",
+    "express": "^4.16.3",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.3.16"
+  }
 }
