@@ -34,7 +34,7 @@ app.use(
 )
 app.use(bodyParser.json())
 mongoose.connect(process.env.MONGODB_URI ||
-    "mongodb://localhost/magicwizard");
+    "mongodb://magicman:Passw0rd@ds337418.mlab.com:37418/heroku_phpx6jhv");
 ​
 app.listen(PORT, function () {
     console.log(`🌎 ==> API Server now listening on PORT http//localhost:${PORT}`);
