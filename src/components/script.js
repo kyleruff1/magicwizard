@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-const mtg = require("mtgsdk");
+import React from 'react';
 class MyComponent extends React.Component {
   constructor(props) {
     super(props);
