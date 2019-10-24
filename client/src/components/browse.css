@@ -1,32 +1,33 @@
 .cardInfo{
 
     background-color: #222;
-    /* border-color: rgb(20, 20, 20);
-    border: 10px;
-
-    position: absolute;
-    right: 100px;
-
-    width:35%;
-    height: auto;
-
-     */
-
-}
-
-/* .list-group{
-
-    width: 50%
+    position: fixed;
+    width: 30%;
+    border-top-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
 
 }
 
 .cardImage{
 
-    margin: 10px;
+    
 
 }
 
-.cardDescription{
+.list-group{
+
+    width: 50%;
+    margin-left: 10%;
+
+}
+
+.btn{
+
+    margin-left: 10%;
+
+}
+
+/*.cardDescription{
 
     margin: 20px;
 

@@ -15,7 +15,7 @@ export default class Browse extends Component {
       isLoaded: false,
       items: [],
       searchTerm: "",
-      selectedCard: {cardName:"", cardDescription:"", cardImage:""}
+      selectedCard: { cardName: "", cardDescription: "", cardImage: "" }
     };
   }
   componentDidMount() {
@@ -43,14 +43,14 @@ export default class Browse extends Component {
     });
   };
 
-//-----------------------------------------------------------------------------
+  //-----------------------------------------------------------------------------
 
   handleAutoChange = () => {
     mtg.card.where({ name: this.state.searchTerm }).then(results => {
       console.log(results);
     });
   };
-//-----------------------------------------------------------------------------
+  //-----------------------------------------------------------------------------
   //   every input in searchbar will trigger an api call.
   handleChange = event => {
     console.log(this.state.searchTerm);
@@ -66,52 +66,52 @@ export default class Browse extends Component {
   // clicking on a list item will give it's name and description
   clickAlert = (cardName, cardDescription, cardImage) => {
     return () => {
-      this.setState({selectedCard:{cardName,cardDescription,cardImage}})
+      this.setState({ selectedCard: { cardName, cardDescription, cardImage } })
     };
   };
 
-//------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------
 
   moreCards = event => {
-          event.preventDefault();
-          console.log("More button Clicked");
-          mtg.card.where({ name: this.state.searchTerm, pageSize: pageSize += 25 }).then(results => {
-            console.log(results);
-            this.setState({ items: results });
-          });
-        };
+    event.preventDefault();
+    console.log("More button Clicked");
+    mtg.card.where({ name: this.state.searchTerm, pageSize: pageSize += 25 }).then(results => {
+      console.log(results);
+      this.setState({ items: results });
+    });
+  };
 
-//------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------
   render() {
     return (
-  <div>
-    <Navbar />
-      <div className="container">
-       <div className="row">
-        <div className="col-sm-12 col-md-12 col-lg-12">
-          <label>
-            <input
-              className="form-control form-control-lg"
-              type="text"
-              placeholder="Search for a card"
-              type="text"
-              value={this.state.searchTerm}
-              onChange={this.handleChange}
-            />
-          </label>
-          <button
-            type="button"
-            className="btn btn-light"
-            onClick={this.handleChange}>
-            Search
-          </button>
-        </div>
-       </div>
-      </div>
-          {/* idk lists here */}
-
+      <div>
+        <Navbar />
+        <div className="container">
           <div className="row">
-            <div className="col-sm-12 col-md-4 col-lg-4" >
+            <div className="col-sm-12 col-md-12 col-lg-12">
+              <label>
+                <input
+                  className="form-control form-control-lg"
+                  type="text"
+                  placeholder="Search for a card"
+                  type="text"
+                  value={this.state.searchTerm}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <button
+                type="button"
+                className="btn btn-light"
+                onClick={this.handleChange}>
+                Search
+          </button>
+            </div>
+          </div>
+        </div>
+        {/* idk lists here */}
+
+      <div className="row">
+        <div className="col-sm-12 col-md-5 col-lg-5" >
           <ul className="list-group">
             {this.state.items.map(item => (
               <li
@@ -125,27 +125,29 @@ export default class Browse extends Component {
               </li>
             ))}
           </ul>
-      <div className="row">
-        <div className="col-sm12 col-md-4 col-lg-4" >
-          <div className="cardInfo">
-            <h2>
-            {this.state.selectedCard.cardName}
-            </h2>
-            <img className="cardImage" src={this.state.selectedCard.cardImage} alt="No Image Available"></img>
-            <p className="cardDescription">
-            {this.state.selectedCard.cardDescription}
-            </p>
-          </div>
-          <button type="button"
-            className="btn btn-light"
-            onClick={this.moreCards}>
-            More Cards
-          </button>
+        </div>
+
+          <div className="col-sm12 col-md-4 col-lg-4" >
+            <div className="cardInfo">
+              <h2>
+                {this.state.selectedCard.cardName}
+              </h2>
+              <img className="cardImage" src={this.state.selectedCard.cardImage} alt="No Image Available"></img>
+              <p className="cardDescription">
+                {this.state.selectedCard.cardDescription}
+              </p>
+            </div>
           </div>
         </div>
+        <div className="row">
+          <button type="button"
+              className="btn btn-light"
+              onClick={this.moreCards}>
+              More Cards
+          </button>
+        </div>
       </div>
-    </div>
-  </div>
+      
     );
   }
 }
