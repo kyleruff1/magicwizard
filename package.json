@@ -25,8 +25,8 @@
   "scripts": {
     "client-install": "cd client && npm install",
     "start": "npm run dev",
-    "server": "node server.js",
-    "client": "npm start --prefix client",
+    "server": "npm run dev",
+    "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "cd client && react-scripts build",
     "test": "react-scripts test",
