@@ -144,11 +144,11 @@ class App extends Component {
 
 
 
-import Carousel from "./components/Carousel";
-import Navbar from "./components/Navbar";
-import DeckList from "./components/DeckList";
-var passport = require('passport');
-require('./config/passport')(passport);
+// import Carousel from "./components/Carousel";
+// import Navbar from "./components/Navbar";
+// import DeckList from "./components/DeckList";
+// var passport = require('passport');
+// require('./config/passport')(passport);
 // class App1 {
 //   constructor() {
 //     return (<Router>
