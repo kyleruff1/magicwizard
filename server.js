@@ -1,8 +1,5 @@
 // Loading evnironmental variables here
-	
-​
 require('dotenv').config()
-​
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -14,17 +11,14 @@ const dbConnection = require('./server/db') // loads our connection to the mongo
 const passport = require('./server/passport')
 const app = express()
 const PORT = process.env.PORT || 3001
-​
 // if (process.env.NODE_ENV !== 'production') {
 // 	app.use(express.static("client/build"));
 // 	app.use(express.static("public"));
 // }
-​
 app.use(express.static(path.join(__dirname, "client/build")));
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
-​
 // ===== Middleware ====
 app.use(morgan('dev'))
 app.use(
@@ -35,15 +29,12 @@ app.use(
 app.use(bodyParser.json())
 mongoose.connect(process.env.MONGODB_URI ||
     "mongodb://localhost/magicwizard");
-​
 app.listen(PORT, function () {
     console.log(`🌎 ==> API Server now listening on PORT http//localhost:${PORT}`);
 });
-​
 // ===== Passport ====
 app.use(passport.initialize())
 app.use(passport.session()) // will call the deserializeUser
-​
 // ===== testing middleware =====
 // app.use(function(req, res, next) {
 // 	console.log('===== passport user =======')
@@ -65,7 +56,6 @@ app.use(passport.session()) // will call the deserializeUser
 // 		res.redirect('/')
 // 	}
 // )
-​
 // ==== if its production environment!
 if (process.env.NODE_ENV === 'production') {
 	const path = require('path')
@@ -75,17 +65,14 @@ if (process.env.NODE_ENV === 'production') {
 		res.sendFile(path.join(__dirname, '../build/'))
 	})
 }
-​
 /* Express app ROUTING */
 app.use('/auth', require('./server/auth'))
-​
 // ====== Error handler ====
 app.use(function(err, req, res, next) {
 	console.log('====== ERROR =======')
 	console.error(err.stack)
 	res.status(500)
 })
-​
 // ==== Starting Server =====
 // app.listen(PORT, () => {
 // 	console.log(`App listening on PORT: ${PORT}`)
