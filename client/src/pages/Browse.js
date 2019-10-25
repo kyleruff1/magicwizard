@@ -167,7 +167,7 @@ export default class Browse extends Component {
               <img
                 className="cardImage"
                 src={this.state.selectedCard.cardImage}
-                srcSet="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=0&type=card"
+                // srcSet="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=0&type=card"
               ></img>
               <p className="cardDescription">
                 {this.state.selectedCard.cardDescription}
