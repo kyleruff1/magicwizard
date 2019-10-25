@@ -25,7 +25,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/browse" component={Browse} />
         <Route exact path="/saved" component={Saved} />
-        <Route exact path="/cards/:id" component={Cards} />
+        <Route exact path="/api/cards" />
         <Route exact path="/searchtest" component={scripts} />
         <Route exact path="/login" component={Login} />
         <Route component={NoMatch} />

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import React from "react";
 import Navbar from "../components/Navbar";
 import "../components/browse.css"
+import API from "../utils/API"
 
 const mtg = require("mtgsdk");
 
@@ -15,12 +16,33 @@ export default class Browse extends Component {
       isLoaded: false,
       items: [],
       searchTerm: "",
-      selectedCard: { cardName: "", cardDescription: "", cardImage: "" }
+      selectedCard: { cardName: "", cardDescription: "", cardImage: "" },
+      card: {}
     };
   }
   componentDidMount() {
     this.loadList();
   }
+  savedCard = event => {
+    alert("clicked");
+    event.preventDefault();
+ 
+      API.saveCard({
+        name: this.state.name,
+        manaCost: this.state.manaCost,
+        cardDescription: this.state.cardDescription
+      })
+        .then(res => this.loadCards())
+        .catch(err => console.log(err));
+    
+  };
+  loadCards = () => {
+    API.getCards()
+      .then(res =>
+        this.setState({ cards: res.data, name: "", manaCost: "", cardDescription: "" })
+      )
+      .catch(err => console.log(err));
+  };
 
   //   currently not using the function below
   //   handleClick = event => {
@@ -122,7 +144,11 @@ export default class Browse extends Component {
                 {item.name}
                 <br></br>
                 {item.manaCost}
+                <button onClick={this.savedCard}>hey</button>
+
+              
               </li>
+            
             ))}
           </ul>
         </div>
