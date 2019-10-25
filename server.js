@@ -1,5 +1,4 @@
 const express = require("express");
-
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
@@ -15,11 +14,10 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/magicwizard";
+
 // Connect to the Mongo DB
-mongoose.connect(
-  "mongodb://user1:Passw0rd>@ds337418.mlab.com:37418/heroku_phpx6jhv" ||
-    "mongodb://localhost/magicwizard"
-);
+mongoose.connect(MONGODB_URI);
 
 // Start the API server
 app.listen(PORT, function() {

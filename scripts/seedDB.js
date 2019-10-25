@@ -3,10 +3,10 @@ const db = require("../models");
 
 // This file empties the Cards collection and inserts the cards below
 
-mongoose.connect(
-  "mongodb://user1:Passw0rd>@ds337418.mlab.com:37418/heroku_phpx6jhv" ||
-    "mongodb://localhost/magicwizard"
-);
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/magicwizard";
+
+// Connect to the Mongo DB
+mongoose.connect(MONGODB_URI);
 
 const cardSeed = [
   {
