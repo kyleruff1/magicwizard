@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 // import React from "react";
 import Navbar from "../components/Navbar";
-import "../components/browse.css"
-import API from "../utils/API"
+import "../components/browse.css";
+import API from "../utils/API";
 
 const mtg = require("mtgsdk");
 
@@ -16,31 +16,32 @@ export default class Browse extends Component {
       isLoaded: false,
       items: [],
       searchTerm: "",
-      selectedCard: { cardName: "", cardDescription: "", cardImage: "" },
-      card: {}
+      selectedCard: {
+        cardName: "",
+        cardDescription: "",
+        cardImage: "",
+        manaCost: ""
+      },
+      card: { name: "", manaCost: "", cardDescription: "" }
     };
   }
   componentDidMount() {
     this.loadList();
   }
   savedCard = event => {
-    alert("clicked");
     event.preventDefault();
- 
-      API.saveCard({
-        name: this.state.name,
-        manaCost: this.state.manaCost,
-        cardDescription: this.state.cardDescription
-      })
-        .then(res => this.loadCards())
-        .catch(err => console.log(err));
-    
+
+    API.saveCard({
+      name: this.state.selectedCard.cardName,
+      manaCost: this.state.selectedCard.manaCost,
+      cardDescription: this.state.selectedCard.cardDescription
+    })
+      .then(res => this.loadCards())
+      .catch(err => console.log(err));
   };
   loadCards = () => {
     API.getCards()
-      .then(res =>
-        this.setState({ cards: res.data, name: "", manaCost: "", cardDescription: "" })
-      )
+      .then(res => console.log(res))
       .catch(err => console.log(err));
   };
 
@@ -55,7 +56,6 @@ export default class Browse extends Component {
   //         console.log(card.imageUrl);
   //       });
   //   };
-
 
   //   this will initially load 10 cards when you load the browse page
   loadList = () => {
@@ -86,9 +86,11 @@ export default class Browse extends Component {
     pageSize = 25;
   };
   // clicking on a list item will give it's name and description
-  clickAlert = (cardName, cardDescription, cardImage) => {
+  clickAlert = (cardName, cardDescription, cardImage, manaCost) => {
     return () => {
-      this.setState({ selectedCard: { cardName, cardDescription, cardImage } })
+      this.setState({
+        selectedCard: { cardName, cardDescription, cardImage, manaCost }
+      });
     };
   };
 
@@ -97,10 +99,12 @@ export default class Browse extends Component {
   moreCards = event => {
     event.preventDefault();
     console.log("More button Clicked");
-    mtg.card.where({ name: this.state.searchTerm, pageSize: pageSize += 25 }).then(results => {
-      console.log(results);
-      this.setState({ items: results });
-    });
+    mtg.card
+      .where({ name: this.state.searchTerm, pageSize: (pageSize += 25) })
+      .then(results => {
+        console.log(results);
+        this.setState({ items: results });
+      });
   };
 
   //------------------------------------------------------------------------------
@@ -124,41 +128,47 @@ export default class Browse extends Component {
               <button
                 type="button"
                 className="btn btn-light"
-                onClick={this.handleChange}>
+                onClick={this.handleChange}
+              >
                 Search
-          </button>
+              </button>
             </div>
           </div>
         </div>
         {/* idk lists here */}
 
-      <div className="row">
-        <div className="col2-sm-12 col-md-6 col-lg-6" >
-          <ul className="list-group">
-            {this.state.items.map(item => (
-              <li
-                className="list-group-item"
-                key={item.id}
-                onClick={this.clickAlert(item.name, item.originalText, item.imageUrl)}
-              >
-                {item.name}
-                <br></br>
-                {item.manaCost}
-                <button onClick={this.savedCard}>hey</button>
+        <div className="row">
+          <div className="col2-sm-12 col-md-6 col-lg-6">
+            <ul className="list-group">
+              {this.state.items.map(item => (
+                <li
+                  className="list-group-item"
+                  key={item.id}
+                  onClick={this.clickAlert(
+                    item.name,
+                    item.originalText,
+                    item.imageUrl,
+                    item.manaCost
+                  )}
+                >
+                  {item.name}
+                  <br></br>
+                  {item.manaCost}
+                  {/* <button onClick={this.savedCard}>hey</button> */}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              
-              </li>
-            
-            ))}
-          </ul>
-        </div>
-
-          <div className="col-sm12 col-md-5 col-lg-5" >
+          <div className="col-sm12 col-md-5 col-lg-5">
             <div className="cardInfo">
-              <h2>
-                {this.state.selectedCard.cardName}
-              </h2>
-              <img className="cardImage" src={this.state.selectedCard.cardImage} srcSet="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=0&type=card" ></img>
+              <h2>{this.state.selectedCard.cardName}</h2>
+              <button onClick={this.savedCard}>Save Card</button>
+              <img
+                className="cardImage"
+                src={this.state.selectedCard.cardImage}
+                srcSet="https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=0&type=card"
+              ></img>
               <p className="cardDescription">
                 {this.state.selectedCard.cardDescription}
               </p>
@@ -166,14 +176,15 @@ export default class Browse extends Component {
           </div>
         </div>
         <div className="row">
-          <button type="button"
-              className="btn btn-light"
-              onClick={this.moreCards}>
-              More Cards
+          <button
+            type="button"
+            className="btn btn-light"
+            onClick={this.moreCards}
+          >
+            More Cards
           </button>
         </div>
       </div>
-      
     );
   }
 }
